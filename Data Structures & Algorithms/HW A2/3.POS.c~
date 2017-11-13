@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+
+struct Item
+{
+char itemName[20];
+int itemCode;
+float price;
+int QtyInStock;
+int IsHighDemand;
+int SoldToday;
+};
+
+int addItem(int top)
+{
+	top++;
+	
+	scanf("%s %d %f %d %d %d",item[top][0],item[top][1],item[top][2],item[top][3],item[top][4],item[top][5],)
+}
+
+int main()
+{
+	
+
+	return 0;
+}

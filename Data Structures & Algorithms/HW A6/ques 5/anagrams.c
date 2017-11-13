@@ -1,0 +1,24 @@
+#include<string.h>
+#include<stdio.h>
+int main()
+{
+	int n=7,i;
+	char s[n][50];
+	char sorted[n][50];
+	
+	for(i=0;i<n;i++)	
+	scanf("%s %s",sorted[i],s[i]);
+	
+	printf("%s ",s[0]);
+	
+	for(i=1;i<n;i++)
+	{
+		if(strcmp(sorted[i],sorted[i-1])==0)
+		printf("%s ",s[i]);
+		else
+		printf("\n%s ",s[i]);
+	}
+	
+	printf("\n");
+	return 0;
+}

@@ -1,0 +1,86 @@
+#include<stdio.h>
+
+int strlen(char *str)
+{
+	int len=0,i=0;
+	
+	while(str[i]!='\0')
+	{
+		len++;
+		i++;
+	}
+	
+	return len;
+}
+
+char *strcpy(char *dest,char *src)
+{
+	int i=0;
+	
+	while(src[i]!='\0')
+	{
+		dest[i]=src[i];
+		i++;
+	}
+	
+	return dest;
+}
+
+char *strcat(char *dest,char *src)
+{
+	int l=2*(strlen(dest)+strlen(src));
+	char s[100];
+	
+	int i=0,j=0;
+	while(dest[i]!='\0')
+	{
+		s[j]=dest[i];
+		i++;
+		j++;
+	}
+	
+	i=0;
+	while(src[i]!='\0')
+	{
+		s[j]=src[i];
+		i++;
+		j++;
+	}
+	
+	s[j]='\0';
+	puts(s);
+	
+	return s;// Segmentation fault on returning
+}
+
+int strend(char *s,char *t)
+{
+	int flag=1,i=0,j=0;
+	int l1=strlen(s),l2=strlen(t);
+	
+	for(i=l1-l2;i<l1;i++)
+	{
+		if(s[i]!=t[j])
+		{
+			flag=0;
+			break;
+		}
+		
+		j++;
+	}
+	
+	return flag;
+}
+int main()
+{
+	char s[50],s1[50];
+	char d[100];
+	scanf("%s %s",s,s1);
+	
+	d=strcat(s,s1);
+	
+	puts(d);
+	
+	return 0;
+	
+}	

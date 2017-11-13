@@ -1,0 +1,50 @@
+#include<stdio.h>
+int slen(char *s1)
+{
+	int i=0;
+	
+	while(s[i]!='\0')
+	{
+		i++;
+	}
+	
+	return i;
+}
+
+int strcmp(char *s1,char *s2)
+{
+	int l1=slen(s1),l2=slen(s2);
+	int i,flag=1;
+	
+	if(l1!=l2)
+	return 0;
+	else
+	{
+		for(i=0;i<l1;i++)
+		if(s1[i]!=s2[i])
+		{
+			flag=0;
+			break;
+		}
+		
+		return flag;
+	}
+}
+
+int main()
+{
+	int n,i,j;
+	scanf("%d",&n);
+	
+	char s[n][100];
+	
+	for(i=0;i<n;i++)
+	scanf("%s",s[i]);
+	
+	char key[100];
+	scanf("%s",key);
+	
+	while()
+	
+	return 0;
+}

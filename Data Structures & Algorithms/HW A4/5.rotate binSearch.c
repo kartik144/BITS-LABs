@@ -1,0 +1,76 @@
+#include<stdio.h>
+int pivot;
+
+void findPivot(int arr[],int l,int r,int n)
+{
+	if(l<r)
+	{
+		int mid=l+(r-l)/2;
+		
+		if(mid!=n-1 && arr[mid]>arr[mid+1])
+		{
+			pivot=mid;
+			return;
+		}
+		else
+		{
+			findPivot(arr,l,mid,n);
+			findPivot(arr,mid+1,r,n);
+		}
+	}
+	
+	return;
+}
+
+int binSearch(int arr[],int l,int r,int key)
+{
+	int mid;
+	
+	while(l<=r)
+	{
+		mid=l+(r-l)/2;
+		
+		if(arr[mid]==key)
+		return mid;
+		else if(arr[mid]>key)
+		{
+			r=mid-1;
+			continue;
+		}
+		else if(arr[mid]<key)
+		{
+			l=mid+1;
+			continue;
+		}
+	}
+	
+	return -1;
+}
+
+int main()
+{
+	int n,i,key,index;
+	scanf("%d",&n);
+	pivot=n;
+	
+	int arr[n];
+	
+	for(i=0;i<n;i++)
+	scanf("%d",&arr[i]);
+	
+	
+	scanf("%d",&key);
+	
+	findPivot(arr,0,n-1,n);
+	
+	if(key>=arr[0] && key<=arr[pivot])
+	index=binSearch(arr,0,pivot+1,key);
+	else
+	index=binSearch(arr,pivot+1,n,key);
+	
+	if(index==-1)
+	printf("Key not present\n");
+	else
+	printf("Key present at %d index\n",index);
+	return 0;
+}

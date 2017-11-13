@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct LinkedList
+{
+	int data;
+	struct LinkedList *next;
+}List;
+
+int getLength(List *temp)
+{
+	int c=0;
+	
+	while(temp!=NULL)
+	{
+		temp=temp->next;
+		c++;
+	}
+	
+	return c;
+}
+
+void insertAtBeg(List **head,int x)
+{
+	List *temp=malloc(sizeof(List));
+	temp->data=x;
+	temp->next=*head;
+	*head=temp;
+	return;
+}
+
+void isPalindrome(List *head)
+{
+	int l=getLength(head),k,i,flag=1;
+	
+	if(l%2==1)
+	k=l/2+2;
+	else
+	k=l/2+1;
+	
+	List *p1=head;
+	List *p2=head;
+	
+	for(i=1;i<=k;i++)
+	p2=p2->next;
+	
+	while(p2!=NULL)
+	{
+		if(p1->data!=p2->data)
+		flag=0;
+		
+		p1=p1->next;
+		p2=p2->next;
+	}
+	
+	if(flag==0)
+	printf("Not ");
+	
+	printf("Palindrome\n");
+	
+	return;
+}
+
+int main()
+{
+	Node *head=NULL;
+	
+	insertAtBeg(&head,1);
+	insertAtBeg(&head,2);
+	insertAtBeg(&head,3);
+	insertAtBeg(&head,2);
+	insertAtBeg(&head,1);
+	
+	isPlaindrome(head);
+	
+	return 0;
+}

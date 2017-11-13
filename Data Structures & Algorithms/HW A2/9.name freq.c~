@@ -1,0 +1,90 @@
+#include<stdio.h>
+int slen(char *s1)
+{
+	int i=0;
+	
+	while(s1[i]!='\0')
+	{
+		i++;
+	}
+	
+	return i;
+}
+
+int scmp(char *s1,char *s2)
+{
+	int l1=slen(s1),l2=slen(s2);
+	int i,flag=0;
+	int l=(l1>l2)?l2:l1;
+	
+	for(i=0;i<l;i++)
+	if(s1[i]!=s2[i])
+	{
+		if(s1[i]>s2[i])
+		flag=1;
+		else
+		flag=-1;
+		
+		break;
+	}
+	
+	return flag;
+	
+}
+
+int main()
+{
+	int n,i,j,count=0;
+	scanf("%d",&n);
+	char buff[50];
+	fgets(buff,50,stdin);
+	
+	char s[n][100];
+	
+	for(i=0;i<n;i++)
+	{
+		fgets(s[i],100,stdin);
+	}
+	
+	char key[100];
+	fgets(key,100,stdin);
+	
+	i=0;
+	j=n;
+	int mid;
+	
+	while(i<=j)
+	{	
+		
+		mid=(i+j)/2;
+		
+		if(scmp(s[mid],key)==0)
+		{
+			int k=mid;
+			while(scmp(s[k],key)==0 && k>=0)
+			{
+				count++;
+				k--;
+			}
+			
+			k=mid+1;
+			
+			while(scmp(s[k],key)==0 && k<n)
+			{
+				count++;
+				k++;
+			}
+			break;
+		}
+		else if (scmp(s[mid],key)==1)
+		j=mid;
+		else if(scmp(s[mid],key)==-1)
+		i=mid;
+		
+		printf("%d %d %d \n",i,j,mid);
+	}
+	
+	printf("%d\n",count);	
+	
+	return 0;
+}

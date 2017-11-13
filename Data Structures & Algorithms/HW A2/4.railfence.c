@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s[1000];
+	int key,l;
+	
+	fgets(s,1000,stdin);
+	l=strlen(s);
+	
+	scanf("%d",&key);
+	
+	char cipher[key][1000];
+	
+	int i,j,p=0;
+	
+	for(i=0;i<key;i++)
+	for(j=0;j<1000;j++)
+	cipher[i][j]='\0';
+	
+	for(i=0;i<1000 && p<l;i++)
+	for(j=0;j<key && p<l;j++)
+	{
+		if(s[p]!=' ')
+		cipher[j][i]=s[p];
+		else
+		{
+			p++;
+			cipher[j][i]=s[p];
+		}
+		p++;
+	}
+	
+	for(i=0;i<key;i++)
+	for(j=0;j<1000;j++)
+	if((cipher[i][j]>='A' && cipher[i][j]<='Z')|| (cipher[i][j]>='a' && cipher[i][j]<='z'))
+	printf("%c",cipher[i][j]);
+	
+	printf("\n");
+	return 0;
+}
