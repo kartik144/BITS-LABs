@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+int main()
+{
+	pid_t p;
+	int status;
+	
+	p=fork();
+	
+	if(p<0)
+	perror("fork");
+	else if(p==0)
+	{
+		printf("This is child. PID=%d\n",getpid());
+		sleep(5);
+		printf("Child Done!\n");
+	}
+	else
+	{
+		printf("This is parent. PID=%d and child's PID=%d\n",getpid(),p);
+		wait(&status);
+		printf("parent Done!\n");
+	}
+	
+	return 0;
+}
